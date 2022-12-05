@@ -22,7 +22,8 @@ found = []
 with open('../Default.sublime-commands', 'w+') as f:
     f.write('[\n')
     first = True
-    for url in sorted(set(links)):
+    for url in set(links):
+    # for url in sorted(set(links)):
 
         url = url.replace('https://tailwindcss.com', '')
         topic = url.split('/')[2].title().replace('-', ' ').split('#')[0]
