@@ -1,6 +1,28 @@
+# i add this
+from urllib.request import urlopen, Request
+import re
+url = 'https://tailwindcss.com/docs/installation'
+req = Request(
+        url,
+        data=None,
+        headers={
+            'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_9_3) ' +
+            'AppleWebKit/537.36 (KHTML, like Gecko) ' +
+            'Chrome/35.0.1916.47 Safari/537.36'
+        }
+    )
+# req.add_header('User-agent', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:107.0) Gecko/20100101 Firefox/107.0')
+response = docs = urlopen(req).read().decode('utf-8')
+links = re.findall('href="(?:(?<=href="))([^"]*\/docs\/[^"]*)(?=")"', response)
+print(len(set(links)))
+
+# i add this
+
+
 import re
 import json
 import urllib.request
+
 
 # Create a request with a valid User-Agent
 req = urllib.request.Request(
